@@ -12,7 +12,7 @@
         </header>
         <main>
             <section>            
-                <h1>Pool Score Tracker</h1>
+                <h1>8-BALL LEADERBOARD</h1>
                 <img width="70" height="70" src="../static/images/icon-8ball.png"/>
             </section>
             <br>
@@ -20,28 +20,32 @@
 
             <section>
                 <h1>NEW MATCH</h1>
-                <img width="60" height="60" src="../static/images/versus.png"/>
-                <br><br>
                 Enter the name of both players below.<br>
-                Press WIN once a player has won the match.
+                Press WINNER once a player has won the match.
 
                 <form method="post">
                     <h1>Player 1:</h1>
-                    <input type="text" class="input-field" placeholder="Enter your name" name="name-p1" required/>
+                    <input type="text" class="input-field" placeholder="Player 1: Enter your name" name="name-p1" required/>
                     <input type="submit" value="WINNER" class="input-button" name="win-p1"/>
 
+                    <br><br>
+                    <img width="45" height="45" src="../static/images/versus.png"/>
+                    <br><br>
+
                     <h1>Player 2:</h1>
-                    <input type="text" class="input-field" placeholder="Enter your name" name="name-p2" required/>
+                    <input type="text" class="input-field" placeholder="Player 2: Enter your name" name="name-p2" required/>
                     <input type="submit" value="WINNER" class="input-button" name="win-p2"/>
                 </form>
             </section>
             <hr>
             <section>
                 <h1>LEADERBOARD</h1>
-                <img width="50" height="50" src="../static/images/icon-win.png"/>
-                <br><br>
                 Top 10 Leaderboard
-                
+                <br><br>
+
+                <img width="50" height="50" src="../static/images/icon-win.png"/>
+                <br>
+
                 <table>
                     <tr>
                     <th>Players</th>
