@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash, redirect, url_for
 import sqlite3
+import os
 
 # SQLite3
 
@@ -12,13 +13,14 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def index():
 
+    print(os.path)
+
     # Recent Matches
     cursor.execute('SELECT * FROM recently ORDER BY date_played DESC LIMIT 5')
 
     listed = []
 
     for a in cursor.fetchall():
-        print(a[0], a[1], a[2], a[3], a[4][0:10])
         listed.append(a)
 
     # Leaderboard
@@ -31,7 +33,6 @@ def index():
     leaderboard = []
 
     for i in cursor.fetchall():
-        print(i)
         leaderboard.append(i)
 
     if request.method == "POST":
@@ -43,7 +44,7 @@ def index():
             cursor.execute('INSERT INTO recently VALUES (?, 0, ?, 1, CURRENT_TIMESTAMP)', (request.form.get("name-p1"), request.form.get("name-p2"),))
             connection.commit()
 
-        return render_template("index.html", listed=listed, leaderboard=leaderboard)
+        return redirect(url_for('index', listed=listed, leaderboard=leaderboard))
     else:
         return render_template("index.html", listed=listed, leaderboard=leaderboard)
 
