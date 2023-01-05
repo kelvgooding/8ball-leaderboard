@@ -53,19 +53,19 @@ hr {
 .input-button:hover {
     transition-duration: 1s;
     background-color: gold;
-    font: black;
+    color: black;
 }
 
 .input-button:active {
     transition-duration: 1s;
     background-color: gold;
-    font: black;
+    color: black;
 }
 
 .input-button:hover {
     transition-duration: 1s;
     background-color: gold;
-    font: black;
+    color: black;
 }
 
 table {
