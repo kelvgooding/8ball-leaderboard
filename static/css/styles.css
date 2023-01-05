@@ -1,0 +1,136 @@
+/* Fonts */
+
+@font-face {
+    font-family: NewFont-Regular;
+    src: url(../fonts/OpenSans-Light.ttf);
+}
+  
+@font-face {
+font-family: NewFont-Bold;
+src: url(../fonts/OpenSans-Medium.ttf);
+}
+
+body {
+    background-color: #d6d6d6;
+    font-size: 1em;
+    color: #000000;
+    margin: 0;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    text-align: center;
+    font-family: NewFont-Regular;
+}
+
+h1 {
+    font-family: NewFont-Bold;
+}
+
+hr {
+    width: 10%;
+}
+
+.input-field {
+    width: 20em;
+    height: 3em;
+    text-align: center;
+    border-color: #FFFFFF;
+    border: 0px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.input-button {
+    width: 8em;
+    height: 3em;
+    text-align: center;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 0px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    transition: 1s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.input-button:hover {
+    transition-duration: 1s;
+    background-color: gold;
+    font: black;
+}
+
+.input-button:active {
+    transition-duration: 1s;
+    background-color: gold;
+    font: black;
+}
+
+.input-button:hover {
+    transition-duration: 1s;
+    background-color: gold;
+    font: black;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    width: 300px;
+}
+
+th {
+    font-family: NewFont-Bold;
+    width: 30px;
+    height: 50px;
+}
+
+td {
+    width: 30px;
+    height: 40px;
+}
+
+.card-recent-results {
+    background-color: #555;
+    width: 400px;
+    height: 10em;
+    border-radius: 20px;
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .card-recent-results {
+        width: 300px;
+    }
+
+    table, td, tr {
+        font-size: 18px;
+        height: 10px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+    .card-recent-results {
+        width: 300px;
+    }
+
+    table, td, tr {
+        font-size: 18px;
+        height: 10px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
