@@ -1,11 +1,12 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
-import os
 
-# SQLite3
+# SQLite3 configuration
 
 connection = sqlite3.connect("static/scoreboard.db", check_same_thread=False)
 cursor = connection.cursor()
+
+# Flask configuration
 
 app = Flask(__name__)
 
@@ -13,27 +14,31 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def index():
 
-    print(os.path)
-
-    # Recent Matches
-    cursor.execute('SELECT * FROM recently ORDER BY date_played DESC LIMIT 5')
+    # Recent Matches - List
 
     listed = []
 
-    for a in cursor.fetchall():
-        listed.append(a)
+    # Recent Matches - SQL Query
 
-    # Leaderboard
+    for values in cursor.execute('SELECT * FROM recently ORDER BY date_played DESC LIMIT 5'):
+        listed.append(values)
 
-    cursor.execute('delete from leaderboard')
-    cursor.execute('insert into leaderboard (players, total_wins) select p1_name, p1_result from recently union all select p2_name, p2_result from recently;')
-    connection.commit()
-    cursor.execute('select players, sum(total_wins) from leaderboard group by players order by 2 desc;')
+    # Leaderboard - List
 
     leaderboard = []
 
-    for i in cursor.fetchall():
-        leaderboard.append(i)
+    # Leaderboard - SQL Delete / Insert
+
+    cursor.execute('DELETE FROM leaderboard')
+    cursor.execute('INSERT INTO leaderboard (players, total_wins) SELECT p1_name, p1_result FROM recently UNION ALL SELECT p2_name, p2_result FROM recently;')
+    connection.commit()
+
+    # Leaderboard - SQL Query
+
+    for values in cursor.execute('SELECT players, SUM(total_wins) FROM leaderboard GROUP BY players ORDER BY 2 DESC;'):
+        leaderboard.append(values)
+
+    # SQL Insert - Input Player Name / Win
 
     if request.method == "POST":
 
