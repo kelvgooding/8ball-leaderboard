@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="../static/images/icon-8ball.png">
         <link rel="stylesheet" href="../static/css/styles.css">
-        <title>8 Ball Leaderboard</title>
+        <title>8-Ball Leaderboard</title>
     </head>
     <body>
         <header>
@@ -33,8 +33,6 @@
                     <input type="text" class="input-field" placeholder="Player 1: Enter your name" name="name-p1" required/>
                     <input type="submit" value="WINNER" class="input-button" name="win-p1"/>
 
-
-
                     <h1>Player 2:</h1>
                     <input type="text" class="input-field" placeholder="Player 2: Enter your name" name="name-p2" required/>
                     <input type="submit" value="WINNER" class="input-button" name="win-p2"/>
@@ -48,9 +46,9 @@
 
                 <table>
                     <tr>
-                        <th>Rank</th>
+                        <th width="50px">Rank</th>
                         <th>Players</th>
-                        <th>Wins</th>
+                        <th width="50px">Wins</th>
                     </tr>
                     {% for row in leaderboard %}
                     <tr>
@@ -75,10 +73,11 @@
                 <div class="card-recent-results">   
                     <br>
                     {{listed.0.4[0:10]}}
+                    <br>
                     <table>
                         <tr>
                             <th>{{listed.0.0}}</th>
-                            <th>vs.</th>
+                            <th width="30px">vs</th>
                             <th>{{listed.0.2}}</th>
                         </tr>
                         <tr>
@@ -104,7 +103,7 @@
                     <table>
                         <tr>
                             <th>{{listed.1.0}}</th>
-                            <th>vs.</th>
+                            <th width="30px">vs</th>
                             <th>{{listed.1.2}}</th>
                         </tr>
                         <tr>
@@ -130,7 +129,7 @@
                     <table>
                         <tr>
                             <th>{{listed.2.0}}</th>
-                            <th>vs.</th>
+                            <th width="30px">vs</th>
                             <th>{{listed.2.2}}</th>
                         </tr>
                         <tr>
@@ -156,7 +155,7 @@
                     <table>
                         <tr>
                             <th>{{listed.3.0}}</th>
-                            <th>vs.</th>
+                            <th width="30px">vs</th>
                             <th>{{listed.3.2}}</th>
                         </tr>
                         <tr>
@@ -184,7 +183,7 @@
                     <table>
                         <tr>
                             <th>{{listed.4.0}}</th>
-                            <th>vs.</th>
+                            <th width="30px">vs</th>
                             <th>{{listed.4.2}}</th>
                         </tr>
                         <tr>
