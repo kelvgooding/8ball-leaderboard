@@ -74,21 +74,18 @@ table {
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;
-    width: 375px;
+    width: 100px;
 }
 
 th {
     font-family: NewFont-Bold;
     font-size: 0.8em;
     height: 40px;
-
 }
 
 td {
     font-size: 0.8em;
     height: 40px;
-    border-color: black;
-
 }
 
 .card-recent-results {
@@ -112,10 +109,24 @@ td {
         width: 300px;
     }
 
-    table, td, tr {
-        font-size: 18px;
-        height: 10px;
-    }
+    table {
+        table-layout: fixed;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+        width: 100px;
+        }
+
+    th {
+        font-family: NewFont-Bold;
+        font-size: 0.8em;
+        height: 40px;
+        }
+
+    td {
+        font-size: 0.8em;
+        height: 40px;
+        }
 
     footer {
         font-size: 12px;
@@ -130,10 +141,23 @@ td {
         width: 300px;
     }
 
-    table, td, tr {
+    table {
+        table-layout: fixed;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+        }
+
+    th {
+        font-family: NewFont-Bold;
         font-size: 0.8em;
-        height: 10px;
-    }
+        height: 40px;
+        }
+
+    td {
+        font-size: 0.8em;
+        height: 40px;
+        }
 
     footer {
         font-size: 12px;
