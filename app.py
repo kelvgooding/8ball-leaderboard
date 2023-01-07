@@ -3,7 +3,7 @@ import sqlite3
 
 # SQLite3 configuration
 
-connection = sqlite3.connect("static/scoreboard.db", check_same_thread=False)
+connection = sqlite3.connect("static/db/8B_DB_PROD.db", check_same_thread=False)
 cursor = connection.cursor()
 
 # Flask configuration
