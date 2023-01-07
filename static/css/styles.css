@@ -11,13 +11,13 @@ src: url(../fonts/OpenSans-Medium.ttf);
 }
 
 body {
+    font-family: NewFont-Regular;
     background-color: #d6d6d6;
     font-size: 1em;
     color: #000000;
     margin: 0;
     padding: 1.5em 1.5em 1.5em 1.5em;
     text-align: center;
-    font-family: NewFont-Regular;
 }
 
 h1 {
@@ -48,6 +48,7 @@ hr {
     margin-bottom: 20px;
     transition: 1s;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    font-weight: bold;
 }
 
 .input-button:hover {
@@ -69,27 +70,31 @@ hr {
 }
 
 table {
+    table-layout: fixed;
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;
-    width: 300px;
+    width: 375px;
 }
 
 th {
     font-family: NewFont-Bold;
-    width: 30px;
-    height: 50px;
+    font-size: 0.8em;
+    height: 40px;
+
 }
 
 td {
-    width: 30px;
+    font-size: 0.8em;
     height: 40px;
+    border-color: black;
+
 }
 
 .card-recent-results {
     background-color: #555;
     width: 400px;
-    height: 10em;
+    height: 11.5em;
     border-radius: 20px;
     color: #fff;
     margin-left: auto;
