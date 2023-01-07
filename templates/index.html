@@ -5,15 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="../static/images/icon-8ball.png">
         <link rel="stylesheet" href="../static/css/styles.css">
-        <title>8-Ball Leaderboard</title>
+        <title>Pool Score Tracker</title>
     </head>
     <body>
         <header>
         </header>
         <main>
             <section>            
-                <h1>8-BALL LEADERBOARD</h1>
+                <h1>8-BALL<br>
                 <img width="70" height="70" src="../static/images/icon-8ball.png"/>
+                <br>LEADERBOARD</h1>
             </section>
             <br>
             <hr>
@@ -23,14 +24,16 @@
                 Enter the name of both players below.<br>
                 Press WINNER once a player has won the match.
 
+                <br><br>
+                <img width="45" height="45" src="../static/images/versus.png"/>
+                <br>
+
                 <form method="post">
                     <h1>Player 1:</h1>
                     <input type="text" class="input-field" placeholder="Player 1: Enter your name" name="name-p1" required/>
                     <input type="submit" value="WINNER" class="input-button" name="win-p1"/>
 
-                    <br><br>
-                    <img width="45" height="45" src="../static/images/versus.png"/>
-                    <br><br>
+
 
                     <h1>Player 2:</h1>
                     <input type="text" class="input-field" placeholder="Player 2: Enter your name" name="name-p2" required/>
@@ -40,33 +43,25 @@
             <hr>
             <section>
                 <h1>LEADERBOARD</h1>
-                Top 10 Leaderboard
-                <br><br>
-
                 <img width="50" height="50" src="../static/images/icon-win.png"/>
                 <br>
 
                 <table>
                     <tr>
-                    <th>Players</th>
-                    <th>Wins</th>
+                        <th>Rank</th>
+                        <th>Players</th>
+                        <th>Wins</th>
                     </tr>
-                
+                    {% for row in leaderboard %}
                     <tr>
-                        <td>{{leaderboard.0.0}}</td>
-                        <td>{{leaderboard.0.1}}</td>
+                        <td><b>#{{ loop.index }}</b></td>
+                        {% for cell in row %}
+                        <td>{{ cell }}</td>
+                        {% endfor %}
                     </tr>
-                
-                    <tr>
-                        <td>{{leaderboard.1.0}}</td>
-                        <td>{{leaderboard.1.1}}</td>
-                    </tr>
-                
-                    <tr>
-                        <td>{{leaderboard.2.0}}</td>
-                        <td>{{leaderboard.2.1}}</td>
-                    </tr>
+                    {% endfor %}
                 </table>
+
             </section>
 
             <br>
@@ -74,7 +69,7 @@
 
             <section>
                 <h1>RECENT RESULTS</h1>
-                Here is an outlook of the last 5 matches:
+                The last 5 match results:
                 <br><br>
 
                 <div class="card-recent-results">   
