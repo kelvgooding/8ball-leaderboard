@@ -41,18 +41,15 @@ def index():
     # SQL Insert - Input Player Name / Win
 
     if request.method == "POST":
-
         if 'win-p1' in request.form:
             cursor.execute('INSERT INTO recently VALUES (?, 1, ?, 0, CURRENT_TIMESTAMP)', (request.form.get("name-p1"), request.form.get("name-p2"),))
             connection.commit()
         elif 'win-p2' in request.form:
             cursor.execute('INSERT INTO recently VALUES (?, 0, ?, 1, CURRENT_TIMESTAMP)', (request.form.get("name-p1"), request.form.get("name-p2"),))
             connection.commit()
-
-        return redirect(url_for('index', listed=listed, leaderboard=leaderboard))
+        return redirect('/')
     else:
         return render_template("index.html", listed=listed, leaderboard=leaderboard)
-
 
 if __name__ == "__main__":
     app.debug = True
