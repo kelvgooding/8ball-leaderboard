@@ -10,14 +10,25 @@ font-family: NewFont-Bold;
 src: url(../fonts/OpenSans-Medium.ttf);
 }
 
+header {
+    background-color: rgb(145, 145, 145);
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    color: #FFFFFF;
+}
+
 body {
     font-family: NewFont-Regular;
     background-color: #d6d6d6;
     font-size: 1em;
     color: #000000;
     margin: 0;
-    padding: 1.5em 1.5em 1.5em 1.5em;
     text-align: center;
+}
+
+main {
+    padding: 1.5em 1.5em 1.5em 1.5em;
 }
 
 h1 {
@@ -35,6 +46,7 @@ hr {
     border-color: #FFFFFF;
     border: 0px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    
 }
 
 .input-button {
@@ -132,8 +144,6 @@ td {
         font-size: 12px;
     }
 }
-
-
 
 
 @media screen and (max-width: 600px) {
