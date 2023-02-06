@@ -1,0 +1,4 @@
+SELECT players, SUM(total_wins) 
+FROM leaderboard
+GROUP BY players
+ORDER BY 2 DESC;
