@@ -15,9 +15,9 @@
 - SQL
 - SQLite3
 
-Release Notes:
+**Release Notes:**
 
-06/02/2023	- Updated the footer to include website icon and url link. This now includes a footer background colour.
+06/02/2023	- Updated the footer to include website icon and url link. This now includes a footer background colour.<br/>
 06/02/2023	- Included new class to update the footer icons.
 12/02/2023	- Remove all matches played in 2022. This is now a clean record from 2023 onwards.
 
