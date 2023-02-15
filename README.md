@@ -33,4 +33,5 @@ This section will show the last 5 matches played, with the details of the 2 play
 06/02/2023	- Included new class to update the footer icons.<br/>
 12/02/2023	- Remove all matches played in 2022. This is now a clean record from 2023 onwards.<br/>
 
-![Screenshot 2023-02-13 at 17-47-38 8-Ball Leaderboard](https://user-images.githubusercontent.com/82043281/218533688-f93ab2f1-41b5-4d58-a815-518f718932d7.png)
+![frame](https://user-images.githubusercontent.com/82043281/218994029-57fa0993-1dde-4dcb-a8a6-4b68a1eebb67.png)
+
