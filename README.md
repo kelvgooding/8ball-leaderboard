@@ -6,6 +6,16 @@
 
 **Features:**
 
+New Match
+
+2 Players can input their names and the winner will use the relevent button to mark themselves as the winner.
+
+Leaderboard
+
+The leaderboard will update to show the player who has the highest win count. This will also show all players who have participated.
+
+Recent Results
+
 **Tech Stack:**
 
 - Python
@@ -18,7 +28,7 @@
 **Release Notes:**
 
 06/02/2023	- Updated the footer to include website icon and url link. This now includes a footer background colour.<br/>
-06/02/2023	- Included new class to update the footer icons.
-12/02/2023	- Remove all matches played in 2022. This is now a clean record from 2023 onwards.
+06/02/2023	- Included new class to update the footer icons.<br/>
+12/02/2023	- Remove all matches played in 2022. This is now a clean record from 2023 onwards.<br/>
 
 ![Screenshot 2023-02-13 at 17-47-38 8-Ball Leaderboard](https://user-images.githubusercontent.com/82043281/218533688-f93ab2f1-41b5-4d58-a815-518f718932d7.png)
