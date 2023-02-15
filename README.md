@@ -6,15 +6,17 @@
 
 **Features:**
 
-New Match
+New Match:
 
 2 Players can input their names and the winner will use the relevent button to mark themselves as the winner.
 
-Leaderboard
+Leaderboard:
 
 The leaderboard will update to show the player who has the highest win count. This will also show all players who have participated.
 
-Recent Results
+Recent Results:
+
+This section will show the last 5 matches played, with the details of the 2 players, the winner and a timestamp.
 
 **Tech Stack:**
 
