@@ -14,6 +14,18 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def index():
 
+    # All Players
+
+    players = []
+
+    for i in cursor.execute('SELECT DISTINCT(PLAYERS) FROM LEADERBOARD'):
+        players.append(i[0])
+
+    print(players)
+
+    for i in players:
+        print(i)
+
     # Recent Matches - List
 
     listed = []
@@ -49,8 +61,8 @@ def index():
             connection.commit()
         return redirect('/')
     else:
-        return render_template("index.html", listed=listed, leaderboard=leaderboard)
+        return render_template("index.html", listed=listed, leaderboard=leaderboard, players=players)
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5010)

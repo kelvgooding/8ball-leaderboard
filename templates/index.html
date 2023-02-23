@@ -27,7 +27,14 @@
                 <img width="70" height="70" style="margin-top: -15px; margin-bottom: -10px;" src="../static/images/icon-8ball.png"/>
             </section>
         </header>
-        <main>
+        <main>   
+
+            <datalist id="player-list">
+                {% for i in players %}
+                <option value="{{i}}"></option>
+                {% endfor %}
+            </datalist>
+
             <section>
                 <h1>NEW MATCH</h1>
                 Enter the name of both players below.<br>
@@ -39,11 +46,11 @@
 
                 <form method="post">
                     <h1>Player 1:</h1>
-                    <input type="text" class="input-field" placeholder="Player 1: Enter your name" name="name-p1" required/>
+                    <input type="text" class="input-field" placeholder="Player 1: Enter your name" name="name-p1" list="player-list" required/>
                     <input type="submit" value="WINNER" class="input-button" name="win-p1"/>
 
                     <h1>Player 2:</h1>
-                    <input type="text" class="input-field" placeholder="Player 2: Enter your name" name="name-p2" required/>
+                    <input type="text" class="input-field" placeholder="Player 2: Enter your name" name="name-p2" list="player-list" required/>
                     <input type="submit" value="WINNER" class="input-button" name="win-p2"/>
                 </form>
             </section>
