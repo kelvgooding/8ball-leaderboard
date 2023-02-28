@@ -21,11 +21,6 @@ def index():
     for i in cursor.execute('SELECT DISTINCT(PLAYERS) FROM LEADERBOARD'):
         players.append(i[0])
 
-    print(players)
-
-    for i in players:
-        print(i)
-
     # Recent Matches - List
 
     listed = []
@@ -47,7 +42,7 @@ def index():
 
     # Leaderboard - SQL Query
 
-    for values in cursor.execute('SELECT players, SUM(total_wins) FROM leaderboard GROUP BY players ORDER BY 2 DESC;'):
+    for values in cursor.execute('SELECT players, SUM(total_wins) AS total_wins, COUNT(players) AS matches_played, ROUND(SUM(total_wins) * 100.0 / COUNT(players), 1) as win_perc FROM leaderboard GROUP BY players ORDER BY 2 DESC;'):
         leaderboard.append(values)
 
     # SQL Insert - Input Player Name / Win

@@ -59,22 +59,26 @@
                 <h1>LEADERBOARD</h1>
                 <img width="50" height="50" src="../static/images/icon-win.png"/>
                 <br>
-
-                <table>
-                    <tr>
-                        <th width="50px">Rank</th>
-                        <th>Players</th>
-                        <th width="50px">Wins</th>
-                    </tr>
-                    {% for row in leaderboard %}
-                    <tr>
-                        <td><b>#{{ loop.index }}</b></td>
-                        {% for cell in row %}
-                        <td>{{ cell }}</td>
+                
+                <div style="overflow-x:auto;">
+                    <table>
+                        <tr>
+                            <th width="100px">Rank</th>
+                            <th width="100px">Players</th>
+                            <th width="100px">Wins</th>
+                            <th width="100px">Played</th>
+                            <th width="100px">Win %</th>
+                        </tr>
+                        {% for row in leaderboard %}
+                        <tr>
+                            <td><b>#{{ loop.index }}</b></td>
+                            {% for cell in row %}
+                            <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </table>
+                    </table>
+                </div>
 
             </section>
 
