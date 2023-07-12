@@ -1,56 +1,64 @@
+"""
+Author: Kelvin Gooding
+Created: 2023-03-01
+Updated: 2023-06-17
+Version: 1.1
+"""
+
+# Modules
+
 from flask import Flask, render_template, request, redirect
 import sqlite3
 
-# SQLite3 configuration
+# SQLite3 Variables
 
-connection = sqlite3.connect("static/db/8B_DB_PROD.db", check_same_thread=False)
+connection = sqlite3.connect("static/db/8BALL_DB.db", check_same_thread=False)
 cursor = connection.cursor()
 
-# Flask configuration
+# Flask Variables
 
 app = Flask(__name__)
 
+# SOS - Start of Script
 
 @app.route("/", methods=["POST", "GET"])
 def index():
 
-    # All Players
+    # Empty list to hold distinct players from the database
 
     players = []
 
     for i in cursor.execute('SELECT DISTINCT(PLAYERS) FROM LEADERBOARD'):
         players.append(i[0])
 
+    # Empty list to hold companies from the database
+
     company = []
 
     for i in cursor.execute('SELECT * FROM COMPANY'):
         company.append(i[0])
 
-    # Recent Matches - List
+    # Empty list to hold recent matches from the database
 
     listed = []
-
-    # Recent Matches - SQL Query
 
     for values in cursor.execute('SELECT * FROM recently ORDER BY date_played DESC LIMIT 5'):
         listed.append(values)
 
-    # Leaderboard - List
-
-    leaderboard = []
-
-    # Leaderboard - SQL Delete / Insert
+    # SQL - Cleardown the leaderboard table before inserting new data
 
     cursor.execute('DELETE FROM leaderboard')
     cursor.execute('INSERT INTO leaderboard (players, company, total_wins) SELECT p1_name, p1_company, p1_result FROM recently UNION ALL SELECT p2_name, p2_company, p2_result FROM recently;')
     connection.commit()
 
-    # Leaderboard - SQL Query
+    # Empty list to hold recent match data from the database
+
+    leaderboard = []
 
     for values in cursor.execute('SELECT players, SUM(total_wins) AS total_wins, COUNT(players) AS matches_played, ROUND(SUM(total_wins) * 100.0 / COUNT(players), 1) as win_perc, company FROM leaderboard GROUP BY players ORDER BY 2 DESC;'):
         leaderboard.append(values)
 
-    # SQL Insert - Input Player Name / Win
+    # Insert player name and win into recently table
 
     if request.method == "POST":
         if 'win-p1' in request.form:
@@ -65,4 +73,4 @@ def index():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host="0.0.0.0", port=5010)
+    app.run(host="0.0.0.0", port=3001)
