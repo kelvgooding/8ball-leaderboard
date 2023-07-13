@@ -12,7 +12,7 @@ import sqlite3
 
 # SQLite3 Variables
 
-connection = sqlite3.connect("8BALL_DB.db", check_same_thread=False)
+connection = sqlite3.connect("8ball_leaderboard_DB.db", check_same_thread=False)
 cursor = connection.cursor()
 
 # Flask Variables

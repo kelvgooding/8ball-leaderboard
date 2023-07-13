@@ -1,4 +1,0 @@
-SELECT *
-FROM recently
-ORDER BY date_played DESC
-LIMIT 5;

@@ -5,8 +5,3 @@ CREATE TABLE recently (
     p2_result   INT,
     date_played DATE
 );
-
-CREATE TABLE leaderboard (
-    players    VARCHAR (50),
-    total_wins INT
-);
