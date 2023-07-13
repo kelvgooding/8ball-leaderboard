@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="Kelv Gooding">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="../static/img/icon-8ball.png">
+        <link rel="stylesheet" href="../static/css/styles.css">
+        <title>8-Ball Leaderboard</title>
+    </head>
+        
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-43S08T1PHV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-43S08T1PHV');
+    </script>
+    
+    <body>
+        <header>
+            <section>            
+                <h1>8-BALL<br>
+                LEADERBOARD</h1>
+
+                <img width="70" height="70" style="margin-top: -15px; margin-bottom: -10px;" src="../static/img/icon-8ball.png"/>
+            </section>
+        </header>
+        <main>   
+
+            <datalist id="player-list">
+                {% for i in players %}
+                <option value="{{i}}"></option>
+                {% endfor %}
+            </datalist>
+
+            <section>
+                <h1>NEW MATCH</h1>
+                Enter the names of both players<br>and company below.<br><br>
+                Press <b>WINNER</b> once a player<br>has won the match.
+
+                <br><br>
+                <img width="45" height="45" src="../static/img/versus.png"/>
+                <br>
+
+                <form method="post">
+
+                    <h1>Player 1:</h1>
+                    <input type="text" class="input-field" placeholder="Player 1: Enter your name" name="name-p1" list="player-list" required/><br>
+                    <select name="company-p1" class="select-field" placeholder="Select your company" required>
+                        <option value="">-</option>
+                        {% for i in company %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select><br/>
+                    <input type="submit" value="WINNER" class="input-button" name="win-p1"/>
+
+                    <h1>Player 2:</h1>
+                    <input type="text" class="input-field" placeholder="Player 2: Enter your name" name="name-p2" list="player-list" required/><br>
+                    <select name="company-p2" class="select-field" required>
+                        <option value="">-</option>
+                        {% for i in company %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select><br/>                    
+                    <input type="submit" value="WINNER" class="input-button" name="win-p2"/>
+                    
+                </form>
+            </section>
+            <hr>
+            <section>
+                <h1>LEADERBOARD</h1>
+                <img width="50" height="50" src="../static/img/icon-win.png"/>
+                <br><br>
+                
+                <div style="overflow-x:auto;">
+                    <table>
+                        <tr>
+                            <th width="75px">Rank</th>
+                            <th width="100px">Players</th>
+                            <th width="75px">Wins</th>
+                            <th width="75px">Played</th>
+                            <th width="75px">Win %</th>
+                            <th width="150px">Company</th>
+                        </tr>
+                        {% for row in leaderboard %}
+                        <tr>
+                            <td><b>#{{ loop.index }}</b></td>
+                            {% for cell in row %}
+                            <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+            </section>
+
+            <br>
+            <hr>
+
+            <section>
+                <h1>RECENT RESULTS</h1>
+                The last 5 match results:
+                <br><br>
+
+                <div class="card-recent-results">   
+                    <br>
+                    {{listed.0.6[0:10]}}
+                    <br>
+                    {{listed.0.6[11:16]}}
+                    <br>
+                    <table>
+                        <tr>
+                            <th>{{listed.0.0}}</th>
+                            <th width="30px">vs</th>
+                            <th>{{listed.0.3}}</th>
+                        </tr>
+                        <tr>
+                            <td>                    
+                                {% if listed.0.2 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                {% if listed.0.5 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card-recent-results">   
+                    <br>
+                    {{listed.1.6[0:10]}}
+                    <br>
+                    {{listed.1.6[11:16]}}
+                    <br>
+                    <table>
+                        <tr>
+                            <th>{{listed.1.0}}</th>
+                            <th width="30px">vs</th>
+                            <th>{{listed.1.3}}</th>
+                        </tr>
+                        <tr>
+                            <td>                    
+                                {% if listed.1.2 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                {% if listed.1.5 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card-recent-results">   
+                    <br>
+                    {{listed.2.6[0:10]}}
+                    <br>
+                    {{listed.2.6[11:16]}}
+                    <br>
+                    <table>
+                        <tr>
+                            <th>{{listed.2.0}}</th>
+                            <th width="30px">vs</th>
+                            <th>{{listed.2.3}}</th>
+                        </tr>
+                        <tr>
+                            <td>                    
+                                {% if listed.2.2 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                {% if listed.2.5 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card-recent-results">   
+                    <br>
+                    {{listed.3.6[0:10]}}
+                    <br>
+                    {{listed.3.6[11:16]}}
+                    <br>
+                    <table>
+                        <tr>
+                            <th>{{listed.3.0}}</th>
+                            <th width="30px">vs</th>
+                            <th>{{listed.3.3}}</th>
+                        </tr>
+                        <tr>
+                            <td>                    
+                                {% if listed.3.2 == 1 %}
+                                    <img width="30" height="30" src="../static/img/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                {% if listed.3.5 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card-recent-results">   
+                    <br>
+                    {{listed.4.6[0:10]}}
+                    <br>
+                    {{listed.4.6[11:16]}}
+                    <br>
+                    <table>
+                        <tr>
+                            <th>{{listed.4.0}}</th>
+                            <th width="30px">vs</th>
+                            <th>{{listed.4.3}}</th>
+                        </tr>
+                        <tr>
+                            <td>                    
+                                {% if listed.4.2 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                {% if listed.4.5 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+
+        <footer>
+
+            <!-- Social Media Links -->
+
+            <section>
+                <a href="https://livelifeautomate.co.uk" target="_blank"><img src="../static/img/web-logo.png" class="img-logo-social"/></a>
+                <a href="https://instagram.com/kelvgooding" target="_blank"><img src="../static/img/instagram-logo.png" class="img-logo-social"/></a>
+                <a href="https://www.linkedin.com/in/kelvingooding/" target="_blank"><img src="../static/img/linkedin-logo.png" class="img-logo-social"/></a>
+                <a href="https://github.com/kelvgooding/" target="_blank"><img src="../static/img/github-logo.png" class="img-logo-social"/></a>
+                <a href="mailto:kelvingooding@livelifeautomate.co.uk?subject=8-Ball Leaderboard - Feedback"><img src="../static/img/mail-logo.png" class="img-logo-social"/></a>
+            </section>
+
+            <br>
+
+            <!-- Copyright -->
+            <section>
+                Created by Kelv Gooding<br>
+                © 2022 Live.Life.Automate! All rights reserved.<br>
+            </section>
+
+        </footer>
+    </body>
+</html>
