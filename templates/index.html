@@ -7,17 +7,7 @@
         <link rel="stylesheet" href="../static/css/styles.css">
         <title>8-Ball Leaderboard</title>
     </head>
-        
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-43S08T1PHV"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-43S08T1PHV');
-    </script>
-    
+  
     <body>
         <header>
             <section>            
@@ -27,7 +17,14 @@
                 <img width="70" height="70" style="margin-top: -15px; margin-bottom: -10px;" src="../static/img/icon-8ball.png"/>
             </section>
         </header>
-        <main>   
+
+        <main>
+
+            <datalist id="location-list">
+                {% for i in location %}
+                <option value="{{i}}"></option>
+                {% endfor %}
+            </datalist>
 
             <datalist id="player-list">
                 {% for i in players %}
@@ -37,7 +34,8 @@
 
             <section>
                 <h1>NEW MATCH</h1>
-                Enter the names of both players<br>and company below.<br><br>
+                Select or enter the location of<br>your match.<br><br>       
+                Next, enter the names of<br>both players for the match.<br><br>
                 Press <b>WINNER</b> once a player<br>has won the match.
 
                 <br><br>
@@ -46,25 +44,28 @@
 
                 <form method="post">
 
+                    <h1>Location / Company:</h1>
+                    <input type="text" class="input-field" placeholder="Select or enter a location or company" name="loc_comp" list="location-list" required/>
+                    <br>
+
                     <h1>Player 1:</h1>
-                    <input type="text" class="input-field" placeholder="Player 1: Enter your name" name="name-p1" list="player-list" required/><br>
-                    <select name="company-p1" class="select-field" placeholder="Select your company" required>
-                        <option value="">-</option>
-                        {% for i in company %}
-                        <option value="{{i}}">{{i}}</option>
-                        {% endfor %}
-                    </select><br/>
-                    <input type="submit" value="WINNER" class="input-button" name="win-p1"/>
+                    <input type="text" class="input-field" placeholder="Player 1: Enter your name" name="name-p1" list="player-list" required/>
+                    <br>
+                    <input type="submit" value="WINNER" class="input-button" name="win-p1" onclick="clicked(event)"/>
 
                     <h1>Player 2:</h1>
-                    <input type="text" class="input-field" placeholder="Player 2: Enter your name" name="name-p2" list="player-list" required/><br>
-                    <select name="company-p2" class="select-field" required>
-                        <option value="">-</option>
-                        {% for i in company %}
-                        <option value="{{i}}">{{i}}</option>
-                        {% endfor %}
-                    </select><br/>                    
-                    <input type="submit" value="WINNER" class="input-button" name="win-p2"/>
+                    <input type="text" class="input-field" placeholder="Player 2: Enter your name" name="name-p2" list="player-list" required/>
+                    <br>
+                    <input type="submit" value="WINNER" class="input-button" name="win-p2" onclick="clicked(event)"/>
+
+                    <script>
+                        function clicked(e)
+                        {
+                            if(!confirm('Are you sure?')) {
+                                e.preventDefault();
+                            }
+                        }
+                    </script>
                     
                 </form>
             </section>
@@ -82,7 +83,6 @@
                             <th width="75px">Wins</th>
                             <th width="75px">Played</th>
                             <th width="75px">Win %</th>
-                            <th width="150px">Company</th>
                         </tr>
                         {% for row in leaderboard %}
                         <tr>
@@ -107,26 +107,26 @@
 
                 <div class="card-recent-results">   
                     <br>
-                    {{listed.0.6[0:10]}}
+                    {{listed.0.5}}
                     <br>
-                    {{listed.0.6[11:16]}}
+                    {{listed.0.4[0:10]}} @ {{listed.0.4[11:16]}}
                     <br>
                     <table>
                         <tr>
                             <th>{{listed.0.0}}</th>
                             <th width="30px">vs</th>
-                            <th>{{listed.0.3}}</th>
+                            <th>{{listed.0.2}}</th>
                         </tr>
                         <tr>
                             <td>                    
-                                {% if listed.0.2 == 1 %}
+                                {% if listed.0.1 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
                             <td>
                             </td>
                             <td>
-                                {% if listed.0.5 == 1 %}
+                                {% if listed.0.3 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
@@ -134,28 +134,29 @@
                     </table>
                 </div>
 
+ 
                 <div class="card-recent-results">   
                     <br>
-                    {{listed.1.6[0:10]}}
+                    {{listed.1.5}}
                     <br>
-                    {{listed.1.6[11:16]}}
+                    {{listed.1.4[0:10]}} @ {{listed.1.4[11:16]}}
                     <br>
                     <table>
                         <tr>
                             <th>{{listed.1.0}}</th>
                             <th width="30px">vs</th>
-                            <th>{{listed.1.3}}</th>
+                            <th>{{listed.1.2}}</th>
                         </tr>
                         <tr>
                             <td>                    
-                                {% if listed.1.2 == 1 %}
+                                {% if listed.1.1 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
                             <td>
                             </td>
                             <td>
-                                {% if listed.1.5 == 1 %}
+                                {% if listed.1.3 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
@@ -165,26 +166,26 @@
 
                 <div class="card-recent-results">   
                     <br>
-                    {{listed.2.6[0:10]}}
+                    {{listed.2.5}}
                     <br>
-                    {{listed.2.6[11:16]}}
+                    {{listed.2.4[0:10]}} @ {{listed.2.4[11:16]}}
                     <br>
                     <table>
                         <tr>
                             <th>{{listed.2.0}}</th>
                             <th width="30px">vs</th>
-                            <th>{{listed.2.3}}</th>
+                            <th>{{listed.2.2}}</th>
                         </tr>
                         <tr>
                             <td>                    
-                                {% if listed.2.2 == 1 %}
+                                {% if listed.2.1 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
                             <td>
                             </td>
                             <td>
-                                {% if listed.2.5 == 1 %}
+                                {% if listed.2.3 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
@@ -192,28 +193,29 @@
                     </table>
                 </div>
 
+                
                 <div class="card-recent-results">   
                     <br>
-                    {{listed.3.6[0:10]}}
+                    {{listed.3.5}}
                     <br>
-                    {{listed.3.6[11:16]}}
+                    {{listed.3.4[0:10]}} @ {{listed.3.4[11:16]}}
                     <br>
                     <table>
                         <tr>
                             <th>{{listed.3.0}}</th>
                             <th width="30px">vs</th>
-                            <th>{{listed.3.3}}</th>
+                            <th>{{listed.3.2}}</th>
                         </tr>
                         <tr>
                             <td>                    
-                                {% if listed.3.2 == 1 %}
-                                    <img width="30" height="30" src="../static/img/img/icon-win.png"/>
+                                {% if listed.3.1 == 1 %}
+                                    <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
                             <td>
                             </td>
                             <td>
-                                {% if listed.3.5 == 1 %}
+                                {% if listed.3.3 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
@@ -223,33 +225,32 @@
 
                 <div class="card-recent-results">   
                     <br>
-                    {{listed.4.6[0:10]}}
+                    {{listed.4.5}}
                     <br>
-                    {{listed.4.6[11:16]}}
+                    {{listed.4.4[0:10]}} @ {{listed.4.4[11:16]}}
                     <br>
                     <table>
                         <tr>
                             <th>{{listed.4.0}}</th>
                             <th width="30px">vs</th>
-                            <th>{{listed.4.3}}</th>
+                            <th>{{listed.4.2}}</th>
                         </tr>
                         <tr>
                             <td>                    
-                                {% if listed.4.2 == 1 %}
+                                {% if listed.4.1 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
                             <td>
                             </td>
                             <td>
-                                {% if listed.4.5 == 1 %}
+                                {% if listed.4.3 == 1 %}
                                     <img width="30" height="30" src="../static/img/icon-win.png"/>
                                 {% endif %}
                             </td>
                         </tr>
                     </table>
                 </div>
-
             </section>
         </main>
 
@@ -270,7 +271,7 @@
             <!-- Copyright -->
             <section>
                 Created by Kelv Gooding<br>
-                © 2022 Live.Life.Automate! All rights reserved.<br>
+                © 2022 - 2023 Live.Life.Automate! All rights reserved.<br>
             </section>
 
         </footer>
