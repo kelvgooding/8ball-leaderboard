@@ -2,8 +2,7 @@
 
 **What is 8-Ball Leaderboard?**
 
-8-Ball Leaderboard is a web application based on the Flask framework. The purpose of this web application, is to have a central place to store match results and total scores per player for the Pool Table in the WeWork office. The intention was to create friendly competetion when playing, and to give an oppurtunity for companies to mix and network within the building.
-
+8-Ball Leaderboard is a web application based on the Flask framework. The purpose of this web application, is to have a central place to store match results and total scores per player for the Pool matches in either a location or company.
 **Features:**
 
 New Match:
