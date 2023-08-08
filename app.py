@@ -1,8 +1,8 @@
 """
 Author: Kelvin Gooding
 Created: 2023-03-01
-Updated: 2023-08-05
-Version: 1.3
+Updated: 2023-08-08
+Version: 1.31
 """
 
 # Modules
@@ -42,6 +42,8 @@ def index():
 
     for values in cursor.execute('SELECT * FROM recently ORDER BY date_played DESC LIMIT 5'):
         listed.append(values)
+
+    print(listed)
 
     # SQL - Cleardown the leaderboard table before inserting new data
 
