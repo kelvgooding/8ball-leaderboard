@@ -1,8 +1,8 @@
 """
 Author: Kelvin Gooding
 Created: 2023-03-01
-Updated: 2023-08-08
-Version: 1.31
+Updated: 2023-10-16
+Version: 1.4
 """
 
 # Modules
@@ -12,7 +12,7 @@ import sqlite3
 
 # SQLite3 Variables
 
-connection = sqlite3.connect("8ball_leaderboard.db", check_same_thread=False)
+connection = sqlite3.connect('/home/pi/apps/8ball_leaderboard/8ball_leaderboard.db', check_same_thread=False)
 cursor = connection.cursor()
 
 # Flask Variables
