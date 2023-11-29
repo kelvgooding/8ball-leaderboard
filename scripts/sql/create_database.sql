@@ -4,7 +4,7 @@ CREATE DATABASE 8ball_leaderboard;
 
 /* grant database access */
 
-GRANT ALL ON 8ball_leaderboard.* TO 'kgooding'@'%' IDENTIFIED BY "6M6@HM%VAiX27!$y7Yzf";
+GRANT ALL ON 8ball_leaderboard.* TO 'kgooding'@'%' IDENTIFIED BY "password";
 
 /* switch to database */
 

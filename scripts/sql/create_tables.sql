@@ -1,3 +1,8 @@
+CREATE TABLE leaderboard (
+    players VARCHAR (255),
+    total_wins INT
+);
+
 CREATE TABLE recently (
     p1_name VARCHAR (255),
     p1_result VARCHAR (255),
