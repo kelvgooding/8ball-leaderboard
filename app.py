@@ -13,7 +13,7 @@ import os
 
 # General Variables
 
-base_path = rf'C:\Users\kelvg\Downloads\8ball_leaderboard\build'
+base_path = f'/home/{os.getlogin()}/apps/8ball-leaderboard'
 db_filename = '8ball_leaderboard.db'
 db_path = os.path.join(base_path, db_filename)
 sql_script = f'{base_path}/scripts/sql/create_tables.sql'
