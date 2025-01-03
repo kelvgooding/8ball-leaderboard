@@ -17,13 +17,26 @@ Recent Results:
 
 This section will show the last 5 matches played, with the details of the 2 players, the winner and a timestamp.
 
-**Tech Stack:**
+## Running app using Docker
 
-- Python
-- Flask
-- HTML
-- CSS
-- SQL
-- SQLite3
+Clone the repository:
 
-![frame](https://user-images.githubusercontent.com/82043281/218994029-57fa0993-1dde-4dcb-a8a6-4b68a1eebb67.png)
+```
+git clone git@github.com:kelvgooding/8ball-leaderboard.git
+```
+
+Navigate to the cloned repository directory
+
+Run the following command to build the Docker image
+
+```
+sudo docker build -t 8ball-leaderboard .
+```
+
+Run the following command to create and start the container:
+
+```
+sudo docker run -itd -p 3001:3001 8ball-leaderboard
+```
+
+This can now be accessed via web browser - http://localhost:3001
