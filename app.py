@@ -1,8 +1,8 @@
 """
-Author: Kelvin Gooding
+Author: Kelv Gooding
 Created: 2023-03-01
-Updated: 2023-11-29
-Version: 1.5
+Updated: 2025-01-03
+Version: 1.6
 """
 
 # Modules
@@ -11,15 +11,11 @@ from flask import Flask, render_template, request, redirect
 from modules import db_check
 import os
 
-# General Variables
-
-base_path = f'/home/{os.getlogin()}/apps/8ball-leaderboard'
-db_filename = '8ball_leaderboard.db'
-db_path = os.path.join(base_path, db_filename)
-sql_script = f'{base_path}/scripts/sql/create_tables.sql'
-
 # SQLite3 Variables
 
+base_path = os.path.dirname(os.path.abspath(__file__))
+db_filename = '8ball_leaderboard.db'
+sql_script = f'{base_path}/scripts/sql/create_tables.sql'
 db_check.check_db(f'{base_path}', f'{db_filename}', f'{sql_script}')
 conn = db_check.sqlite3.connect(os.path.join(base_path, db_filename), check_same_thread=False)
 c = conn.cursor()
@@ -28,7 +24,7 @@ c = conn.cursor()
 
 app = Flask(__name__)
 
-# SOS - Start of Script
+# Methods
 
 @app.route("/", methods=["POST", "GET"])
 def index():
@@ -51,8 +47,6 @@ def index():
 
     for values in c.execute('SELECT * FROM recently ORDER BY date_played DESC LIMIT 5'):
         listed.append(values)
-
-    print(listed)
 
     # SQL - Cleardown the leaderboard table before inserting new data
 
