@@ -1,4 +1,4 @@
-# 8-Ball Leaderboard
+# 8-BALL LEADERBOARD
 
 **What is 8-Ball Leaderboard?**
 
@@ -22,21 +22,21 @@ This section will show the last 5 matches played, with the details of the 2 play
 Clone the repository:
 
 ```
+mkdir ~/repos
+cd ~/repos
 git clone git@github.com:kelvgooding/8ball-leaderboard.git
 ```
-
-Navigate to the cloned repository directory
 
 Run the following command to build the Docker image
 
 ```
-sudo docker build -t 8ball-leaderboard .
+sudo docker build -t contacts .
 ```
 
-Run the following command to create and start the container:
+Run the following start a container:
 
 ```
-sudo docker run -itd -p 3001:3001 8ball-leaderboard
+sudo docker run -itd -p 3001:3001 -v /mnt/usb/volumes/8ball-leaderboard:/data --name 8ball-leaderboard 8ball-leaderboard
 ```
 
-This can now be accessed via web browser - http://localhost:3001
+This should now be accessible via a web browser - ```http://localhost:3001```
