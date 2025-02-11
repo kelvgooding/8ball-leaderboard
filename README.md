@@ -30,7 +30,7 @@ git clone git@github.com:kelvgooding/8ball-leaderboard.git
 Run the following command to build the Docker image
 
 ```
-sudo docker build -t contacts .
+sudo docker build -t 8ball-leaderboard .
 ```
 
 Run the following start a container:
